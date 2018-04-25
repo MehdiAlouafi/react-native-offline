@@ -14,8 +14,12 @@ export default function checkInternetAccess(
       .then(() => {
         resolve(true);
       })
-      .catch(() => {
-        resolve(false);
+      .catch((r: *) => {
+        if (r === 'timeout') {
+          resolve(r);
+        } else {
+          resolve(false);
+        }
       });
   });
 }
